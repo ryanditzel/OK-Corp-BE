@@ -1,23 +1,25 @@
 "use strict";
 const { User, sequelize } = require("../models");
 const falso = require("@ngneat/falso");
+const { user } = require("pg/lib/defaults");
 module.exports = {
   async up(queryInterface, Sequelize) {
-    const reviews = await Promise.all(
-      [...Array(10)].map(async () => {
-        let user = await User.findOne({ order: sequelize.random(), raw: true });
-        return {
-          title: falso.randCatchPhrase({ maxlength: 10 }),
-          jobTitle: falso.randJobTitle,
-          body: falso.randSentence({ maxlength: 30 }),
-          helpful: falso.randNumber({ min: 0, max: 300 }),
-          unhelpful: falso.randNumber({ min: 0, max: 300 }),
-        };
-      })
-    );
+    return queryInterface.bulkInsert("reviews", [
+      {
+        title: "Boil 'em, fry 'em, put 'em in a stew",
+        jobTitle: "Potato Enthusiast",
+        body: "I'm a potato",
+        helpful: 77,
+        unhelpful: 17,
+        user_id: 1,
+        companyId: 1,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+    ]);
   },
 
   async down(queryInterface, Sequelize) {
-    return queryInterface.bulkDelete();
+    return queryInterface.bulkDelete("reviews");
   },
 };

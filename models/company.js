@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Company.hasMany(models.Review, {
-        foreignKey: "company_id",
+        foreignKey: "companyId",
         onDelete: "CASCADE",
         onUpdate: "CASCADE",
       }),
@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "Company",
-      tableName: "Companies",
+      tableName: "companies",
     }
   );
   return Company;

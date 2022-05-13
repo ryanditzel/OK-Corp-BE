@@ -13,7 +13,12 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "user_id",
         onDelete: "CASCADE",
         onUpdate: "CASCADE",
-      });
+      }),
+        Review.belongsTo(models.Company, {
+          foreignKey: "companyId",
+          onDelete: "CASCADE",
+          onUpdate: "CASCADE",
+        });
     }
   }
   Review.init(
@@ -23,10 +28,11 @@ module.exports = (sequelize, DataTypes) => {
       body: DataTypes.TEXT,
       helpful: DataTypes.INTEGER,
       unhelpful: DataTypes.INTEGER,
+      companyId: DataTypes.INTEGER,
       user_id: {
         type: DataTypes.INTEGER,
         references: {
-          model: "Users",
+          model: "users",
           key: "id",
         },
       },
@@ -34,7 +40,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "Review",
-      tableName: "Reviews",
+      tableName: "reviews",
     }
   );
   return Review;
