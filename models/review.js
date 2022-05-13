@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Review.belongsTo(models.User, {
-        foreignKey: "user_id",
+        foreignKey: "userId",
         onDelete: "CASCADE",
         onUpdate: "CASCADE",
       }),
@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
       helpful: DataTypes.INTEGER,
       unhelpful: DataTypes.INTEGER,
       companyId: DataTypes.INTEGER,
-      user_id: {
+      userId: {
         type: DataTypes.INTEGER,
         references: {
           model: "users",

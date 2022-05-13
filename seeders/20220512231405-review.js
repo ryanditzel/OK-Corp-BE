@@ -11,7 +11,7 @@ module.exports = {
         body: "I'm a potato",
         helpful: 77,
         unhelpful: 17,
-        user_id: 1,
+        userId: 1,
         companyId: 1,
         createdAt: new Date(),
         updatedAt: new Date(),

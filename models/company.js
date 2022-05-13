@@ -13,12 +13,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "companyId",
         onDelete: "CASCADE",
         onUpdate: "CASCADE",
-      }),
-        Company.hasMany(models.User, {
-          foreignKey: "user_id",
-          onDelete: "CASCADE",
-          onUpdate: "CASCADE",
-        });
+      });
     }
   }
   Company.init(
