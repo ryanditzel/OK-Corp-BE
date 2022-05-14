@@ -53,7 +53,7 @@ const GetReviewByID = async (req, res) => {
 const GetReviewByUserID = async (req, res) => {
   try {
     const reviewOfUser = await Review.findAll({
-      include: [{ model: User, attributes: ["username"] }],
+      include: [{ model: User, attributes: ["userName"] }],
       where: { userId: req.params.user_id },
     });
     res.send(reviewOfUser);
