@@ -75,7 +75,7 @@ const EditReview = async (req, res) => {
   try {
     const review = await Review.update(
       { ...req.body },
-      { where: { id: req.params.review }, returning: true }
+      { where: { id: req.params.review_id }, returning: true }
     );
     res.send(review);
   } catch (error) {
